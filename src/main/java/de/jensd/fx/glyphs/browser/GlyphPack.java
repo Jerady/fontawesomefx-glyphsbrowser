@@ -10,7 +10,7 @@
  * BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  *
- */package de.jensd.fx.glyphs.demo.browser;
+ */package de.jensd.fx.glyphs.browser;
 
 import de.jensd.fx.glyphs.GlyphIcon;
 import javafx.collections.ObservableList;

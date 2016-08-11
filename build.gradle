@@ -6,14 +6,14 @@ repositories {
     mavenCentral()
 }
 
-mainClassName = 'de.jensd.fx.glyphs.demo.browser.GlyphsBrowserApp'
+mainClassName = 'de.jensd.fx.glyphs.browser.GlyphsBrowserApp'
 
 sourceCompatibility = '1.8'
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
 
 if (!hasProperty('mainClass')) {
-    ext.mainClass = 'de.jensd.fx.glyphs.demo.browser.GlyphsBrowserApp'
+    ext.mainClass = 'de.jensd.fx.glyphs.browser.GlyphsBrowserApp'
 }
 
 task execute(type:JavaExec) {

@@ -11,7 +11,7 @@
  * governing permissions and limitations under the License.
  *
  */
-package de.jensd.fx.glyphs.demo.browser;
+package de.jensd.fx.glyphs.browser;
 
 import java.io.IOException;
 import java.net.URL;
