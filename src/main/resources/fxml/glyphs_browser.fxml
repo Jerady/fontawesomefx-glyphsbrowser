@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import org.controlsfx.control.GridView?>
+
+<fx:root prefHeight="600.0" prefWidth="800.0" type="VBox" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+      <SplitPane dividerPositions="0.33" VBox.vgrow="ALWAYS">
+         <items>
+            <VBox alignment="TOP_CENTER" spacing="10.0" styleClass="glyph-packs-pane">
+               <children>
+                  <ListView fx:id="glyphsPackListView" style="-fx-background-color: null;" VBox.vgrow="ALWAYS" />
+                    <GridPane hgap="5.0" VBox.vgrow="NEVER">
+                        <columnConstraints>
+                            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="ALWAYS" />
+                        </columnConstraints>
+                        <rowConstraints>
+                        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="20.0" vgrow="NEVER" />
+                        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="20.0" vgrow="NEVER" />
+                            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="20.0" vgrow="NEVER" />
+                        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="20.0" vgrow="NEVER" />
+                        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="20.0" vgrow="NEVER" />
+                        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="20.0" vgrow="NEVER" />
+                        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="20.0" vgrow="NEVER" />
+                        </rowConstraints>
+                        <children>
+                            <Label styleClass="key-label" text="%fontinfo.label.NumberOFIcons" GridPane.rowIndex="2" />
+                            <Label fx:id="numberOfIconsLabel" styleClass="value-label" text="numberOfIconsLabel" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label styleClass="key-label" text="%fontinfo.label.FontName" />
+                        <Label styleClass="key-label" text="%fontinfo.label.Fontfamily" GridPane.rowIndex="1" />
+                        <Label fx:id="fontNameLabel" styleClass="value-label" text="fontNameLabel" GridPane.columnIndex="1" />
+                        <Label fx:id="fontFamilyLabel" styleClass="value-label" text="fontFamilyLabel" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label styleClass="key-label" text="%fontinfo.label.Version" GridPane.rowIndex="3" />
+                        <Label fx:id="fontVersionLabel" styleClass="value-label" text="fontVersionLabel" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label styleClass="key-label" text="%fontinfo.label.ReleaseDate" GridPane.rowIndex="4" />
+                        <Label fx:id="fontReleaseDateLabel" styleClass="value-label" text="fontReleaseDateLabel" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label styleClass="key-label" text="%fontinfo.label.Url" GridPane.rowIndex="5" />
+                        <Label styleClass="key-label" text="%fontinfo.label.WhatsnNew" GridPane.rowIndex="6" />
+                        <Label fx:id="fontWhatsNewLabel" styleClass="value-label" text="fontWhatsNewLabel" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <Hyperlink fx:id="fontUrlLabel" text="Hyperlink" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        </children>
+                    </GridPane>
+               </children>
+            </VBox>
+            <VBox fx:id="glyphsBox" style="-fx-background-color: -fx-bgcolor;">
+               <children>
+                  <GridView fx:id="glyphsGridView" horizontalCellSpacing="8.0" styleClass="glyphs-grid-view" verticalCellSpacing="8.0" VBox.vgrow="ALWAYS" />
+                  <VBox alignment="CENTER_LEFT" spacing="20.0" VBox.vgrow="NEVER">
+                     <children>
+                        <HBox fx:id="glyphPreviewPane" alignment="CENTER_LEFT" minHeight="-Infinity" prefHeight="100.0" spacing="10.0" VBox.vgrow="ALWAYS" />
+                        <Label fx:id="glyphNameLabel" styleClass="glyph-name-label" />
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </VBox>
+                  <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="24.0">
+                     <children>
+                        <Slider fx:id="glyphSizeSlider" min="12.0" />
+                        <Label fx:id="glyphSizeSliderValueLabel" alignment="CENTER_RIGHT" prefWidth="24.0" text="100" />
+                        <Label text="px" />
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <padding>
+                        <Insets left="10.0" right="10.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </VBox>
+         </items>
+      </SplitPane>
+    </children>
+</fx:root>

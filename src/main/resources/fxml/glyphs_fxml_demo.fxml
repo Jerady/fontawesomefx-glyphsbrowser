@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import de.jensd.fx.glyphs.materialicons.*?>
+<?import de.jensd.fx.glyphs.*?>
+<?import de.jensd.fx.glyphs.materialdesignicons.*?>
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import de.jensd.fx.glyphs.weathericons.*?>
+<?import de.jensd.fx.glyphs.GlyphsStack?>
+
+<fx:root prefHeight="300.0" prefWidth="600.0" type="VBox" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <VBox alignment="CENTER" spacing="10.0">
+            <children>
+                <Button mnemonicParsing="false" text="Button">
+                    <graphic>
+                        <WeatherIconView glyphName="ALIEN" />
+                    </graphic>
+                </Button>
+                <Button mnemonicParsing="false" text="Button">
+                    <graphic>
+                        <FontAwesomeIconView glyphName="AMBULANCE" glyphStyle="-fx-fill: linear-gradient(#70b4e5 0%, #247cbc 70%, #2c85c1 85%);" size="12em" />
+                    </graphic>
+                </Button>
+                <Label text="Label" />
+                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                    <children>
+                  <MaterialDesignIconView glyphName="AIRBALLOON" size="48.0" />
+                  <MaterialIconView glyphName="ADB" glyphStyle="" size="4em" />
+                        <WeatherIconView glyphName="RAIN" glyphStyle="-fx-fill: linear-gradient(#70b4e5 0%, #247cbc 70%, #2c85c1 85%);" size="120.0" />
+                        <WeatherIconView glyphName="RAIN" size="5em" styleClass="alien-button" />
+                        <Label alignment="CENTER" text="Label">
+                            <font>
+                                <Font size="93.0" />
+                            </font>
+                        </Label>
+                    </children>
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                    </padding>
+                </HBox>
+                <StackPane>
+                    <children>
+                        <FontAwesomeIconView glyphName="CIRCLE" glyphStyle="-fx-fill: linear-gradient(#70b4e5 0%, #247cbc 70%, #2c85c1 85%);" size="20em" />
+                        <FontAwesomeIconView glyphStyle="-fx-fill: linear-gradient(#ffffff, #d2d2d2); -fx-effect: dropshadow( one-pass-box , rgba(0,0,0,0.8) , 4 , 0.0 , 1 , 1 );" size="10em" />
+                    </children>
+                </StackPane>
+                <GlyphsStack>
+                    <FontAwesomeIconView glyphName="CIRCLE" glyphStyle="-fx-fill: linear-gradient(#70b4e5 0%, #247cbc 70%, #2c85c1 85%);" size="20em" />
+                    <WeatherIconView glyphName="SUNRISE" glyphStyle="-fx-fill: linear-gradient(orange 0%, darkred); -fx-effect: dropshadow( one-pass-box , rgba(0,0,0,0.8) , 4 , 0.0 , 1 , 1 );" size="10em" />
+                </GlyphsStack>
+            </children>
+            <padding>
+                <Insets bottom="20.0" top="20.0" />
+            </padding>
+        </VBox>
+    </children>
+</fx:root>

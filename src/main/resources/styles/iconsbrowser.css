@@ -1,0 +1,187 @@
+.root {
+    -fx-base:  white;
+    -fx-color: white;
+    -fx-bgcolor: rgb(242,242,242);
+    -fx-background: rgb(242,242,242);
+    -fx-accent: rgb(48,131,251);
+    -fx-padding: 0px;
+    -fx-body-color: white;
+    -fx-focus-color: -fx-accent;
+    -fx-mark-highlight-color: white;
+    -fx-mark-color: -fx-accent;
+    -fx-inner-border: rgb(201,201,201);
+    -fx-outer-border: linear-gradient(to bottom, rgb(201,201,201) 0%, rgb(173,173,173) 100%);
+    -fx-prompt-text-fill: rgba(48,131,251,0.5);
+    -fx-hover-color: rgb(234,239,247);
+    -fx-selected-color: rgb(179,196,225);
+}
+
+
+.glyph-icon:hover {
+    -fx-background-color: -fx-outer-border, -fx-inner-border, -fx-body-color; 
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 5, 4, 3;
+}
+
+.glyph-icon{
+    -fx-background-color: -fx-outer-border, -fx-inner-border, -fx-body-color; 
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 5, 4, 3;
+}
+
+.title-label{
+    -fx-font-weight: bold;
+    -fx-font-size: 2em;
+}
+
+.key-label{
+    -fx-font-size: 0.9em;
+    -fx-text-fill: rgb(120,109,109);
+    -fx-font-weight: bold;
+}
+
+.value-label{
+    -fx-font-size: 0.9em;
+    -fx-font-weight: bold;
+}
+
+.font-button{
+    -fx-font-size: 0.8em;
+    -fx-background-radius: 10, 9, 8;
+    -fx-padding: 3px 5px 3px 5px;
+    -fx-background-color: rgb(216,216,216);
+}
+
+.glyphs-grid-view {
+    -fx-effect: innershadow( gaussian, rgba( 0, 0, 0, 0.2 ), 10, 0, 0, 0 );
+    -fx-background-color: white;
+}
+
+.glyphs-scroll-pane {
+    -fx-effect: innershadow( gaussian, rgba( 0, 0, 0, 0.1 ), 10, 0, 2, 1 );
+}
+
+.glyph-grid-cell{
+}
+
+.glyph-grid-cell:selected{
+    -fx-background-radius: 10, 9, 8;
+    -fx-background-color: rgb(0,216,216);
+}
+
+.glyph-grid-cell:hover{
+    -fx-background-color: rgba( 0, 0, 0, 0.1 )
+}
+
+.header-pane{
+    -fx-background-color: linear-gradient(to bottom, rgb(229, 226,229) 0%, rgb(206,205,206) 100%); 
+}
+
+.glyph-packs-pane{
+    -fx-background-color: linear-gradient(to bottom, rgb(206,205,206) 0%, rgb(200, 200, 200)  100%); 
+}
+
+.glyph-name-label{
+    -fx-font-weight: bold;
+    -fx-font-size: 1.4em;
+}
+
+.hyperlink:visited, .hyperlink:pressed{
+    -fx-border: null;
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * SplitPane                                                                   *
+ *                                                                             *
+ ******************************************************************************/
+.split-pane {
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    -fx-background-color: rgb(101,101,101);
+}
+
+.split-pane-divider{
+    -fx-background-color: null;
+    -fx-background-insets: 0 0 0 0;
+    -fx-border-color: null;
+    -fx-padding: 0 1 0 0;
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * ScrollPane and ScrollBar                                                    *
+ *                                                                             *
+ ******************************************************************************/
+.scroll-pane {
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.scroll-bar:horizontal,
+.scroll-bar:vertical
+{
+    -fx-background-color: null;
+    -fx-border-color: null;
+}
+
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track
+{
+    -fx-background-radius: 0em;
+    -fx-border-radius: 0em;
+}
+
+.scroll-bar:horizontal .increment-button ,
+.scroll-bar:horizontal .decrement-button {
+    -fx-background-color: null;
+    -fx-background-radius: 2em;
+    -fx-padding:0 0 10 0;
+}
+
+.scroll-bar:vertical .increment-button ,
+.scroll-bar:vertical .decrement-button {
+
+    -fx-background-color: null;
+    -fx-background-radius: 0em;
+    -fx-padding: 0 10 0 0;
+
+}
+
+.scroll-bar:horizontal > .decrement-button > .decrement-arrow,
+.scroll-bar:horizontal > .increment-button > .increment-arrow,
+.scroll-bar:vertical > .decrement-button > .decrement-arrow ,
+.scroll-bar:vertical > .increment-button > .increment-arrow {
+    -fx-shape: "";	
+    -fx-padding: 0;
+}
+
+
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb {
+    -fx-background-color: derive(black, 90%);
+    -fx-background-insets: 2, 0, 0;
+    -fx-background-radius: 2em;
+}
+
+
+/*******************************************************************************
+ *                                                                             *
+ * GlyphsPack ListCell                                                           *
+ *                                                                             *
+ ******************************************************************************/
+.list-cell{
+    -fx-font-size: 1.2em;
+    -fx-font-weight: normal;
+    -fx-background-color: null;
+}
+
+.list-cell:filled:selected:focused, .list-cell:filled:selected {
+    -fx-font-weight: bold;
+    -fx-background-color: null;
+    -fx-text-fill: -fx-accent;
+}
+
+.list-cell:empty{
+    -fx-background-color: null;
+}

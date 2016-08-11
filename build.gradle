@@ -1,0 +1,32 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+mainClassName = 'de.jensd.fx.glyphs.demo.browser.GlyphsBrowserApp'
+
+sourceCompatibility = '1.8'
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+
+if (!hasProperty('mainClass')) {
+    ext.mainClass = 'de.jensd.fx.glyphs.demo.browser.GlyphsBrowserApp'
+}
+
+task execute(type:JavaExec) {
+   main = mainClass
+   classpath = sourceSets.main.runtimeClasspath
+}
+
+dependencies {
+    compile 'de.jensd:fontawesomefx-fontawesome:4.6.3'
+    compile 'de.jensd:fontawesomefx-materialdesignfont:1.6.50'
+    compile 'de.jensd:fontawesomefx-materialicons:2.2.0'
+    compile 'de.jensd:fontawesomefx-octicons:4.3.0'
+    compile 'de.jensd:fontawesomefx-icons525:2.6.0'
+    compile 'de.jensd:fontawesomefx-weathericons:2.0-3'
+    compile 'org.controlsfx:controlsfx:8.40.10'
+}
