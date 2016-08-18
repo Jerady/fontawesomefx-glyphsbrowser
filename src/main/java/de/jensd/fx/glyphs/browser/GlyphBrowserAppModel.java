@@ -60,6 +60,11 @@ public class GlyphBrowserAppModel {
     private ObjectProperty<GlyphIcon> selectedGlyphIconProperty;
     private String[] glyphPreviewSizes;
     private Clipboard clipboard;
+    public static final String APP_VERSION = "1.0";
+    public static final String APP_NAME = "FontAwesomeFX 8.12 - GlyphsBrowser";
+    public static final String APP_STYLES = "/styles/iconsbrowser.css";
+    public static final int DEFAULT_WITH = 1024;
+    public static final int DEFAULT_HEIGHT = 600;
 
     public GlyphBrowserAppModel() {
         init();
@@ -147,6 +152,8 @@ public class GlyphBrowserAppModel {
         }
         return glyphPreviewSizes;
     }
+    
+    
 
     private GlyphIcon createIconView(GlyphIcon icon) {
         icon.glyphSizeProperty().bind(glyphSizeProperty());
