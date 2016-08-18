@@ -2,5 +2,6 @@
 build/
 private/
 gradle/
-.ng-gradle/
+.nb-gradle/
 .gradle/
+.nb-gradle*
