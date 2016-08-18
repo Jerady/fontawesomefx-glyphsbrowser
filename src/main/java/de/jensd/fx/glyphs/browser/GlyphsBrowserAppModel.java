@@ -65,16 +65,18 @@ public class GlyphsBrowserAppModel {
     public final static String APP_VERSION = "1.0";
     public final static String APP_NAME = "FontAwesomeFX 8.12 - GlyphsBrowser";
     public final static String APP_STYLES = "/styles/iconsbrowser.css";
-    public final static int DEFAULT_WITH = 1024;
-    public final static int DEFAULT_HEIGHT = 600;
     public final static String RESOURCE_BUNDLE = "i18n/messages";
     public final static String GLYPH_BROWSER_FXML = "/fxml/glyphs_browser.fxml";
+    public final static int DEFAULT_WITH = 1024;
+    public final static int DEFAULT_HEIGHT = 600;
+    public final static int DEFAULT_GLYPH_SIZE = 24;
+    public final static String[] GLYPH_PREVIEW_SIZES = {"8px", "10px", "12px", "16px", "26px", "36px", "46px", "56px", "66px", "86px"};
+
 
     private ObservableList<GlyphsPack> glyphsPacks;
     private ObjectProperty<Number> glyphSizeProperty;
     private HostServices hostServices;
     private ObjectProperty<GlyphIcon> selectedGlyphIconProperty;
-    private String[] glyphPreviewSizes;
     private Clipboard clipboard;
 
     public GlyphsBrowserAppModel() {
@@ -145,7 +147,7 @@ public class GlyphsBrowserAppModel {
 
     public ObjectProperty<Number> glyphSizeProperty() {
         if (glyphSizeProperty == null) {
-            glyphSizeProperty = new SimpleObjectProperty<>(24);
+            glyphSizeProperty = new SimpleObjectProperty<>(DEFAULT_GLYPH_SIZE);
         }
         return glyphSizeProperty;
     }
@@ -157,28 +159,21 @@ public class GlyphsBrowserAppModel {
         return selectedGlyphIconProperty;
     }
 
-    public String[] getGlyphPreviewSizes() {
-        if (glyphPreviewSizes == null) {
-            glyphPreviewSizes = new String[]{"8px", "10px", "12px", "16px", "26px", "36px", "46px", "56px", "66px", "86px"};
-        }
-        return glyphPreviewSizes;
-    }
-
     private GlyphIcon createIconView(GlyphIcon icon) {
         icon.glyphSizeProperty().bind(glyphSizeProperty());
         return icon;
     }
 
-    public Optional<GlyphIconsDetails> getGlyphIconsDetails(GlyphIcon glyphIcon) {
-        GlyphIconsDetails glyphIconsDetails = null;
+    public Optional<GlyphIconInfo> getGlyphIconInfo(GlyphIcon glyphIcon) {
+        GlyphIconInfo glyphIconInfo = null;
         if (glyphIcon != null) {
             if (glyphIcon instanceof FontAwesomeIconView) {
                 FontAwesomeIcon icon = FontAwesomeIcon.valueOf(glyphIcon.getGlyphName());
                 ObservableList<Node> preview = FXCollections.observableArrayList();
-                for (String previewSize : getGlyphPreviewSizes()) {
+                for (String previewSize : GLYPH_PREVIEW_SIZES) {
                     preview.add(FontAwesomeIconFactory.get().createIcon(icon, previewSize));
                 }
-                glyphIconsDetails = new GlyphIconsDetails(
+                glyphIconInfo = new GlyphIconInfo(
                         "FontAwesomeIcon." + glyphIcon.getGlyphName(),
                         icon.unicodeToString(),
                         "FontAwesomeIconView icon = new FontAwesomeIconView(FontAwesomeIcon." + glyphIcon.getGlyphName() + ");",
@@ -187,10 +182,10 @@ public class GlyphsBrowserAppModel {
             } else if (glyphIcon instanceof OctIconView) {
                 OctIcon icon = OctIcon.valueOf(glyphIcon.getGlyphName());
                 ObservableList<Node> preview = FXCollections.observableArrayList();
-                for (String previewSize : getGlyphPreviewSizes()) {
+                for (String previewSize : GLYPH_PREVIEW_SIZES) {
                     preview.add(OctIconFactory.get().createIcon(icon, previewSize));
                 }
-                glyphIconsDetails = new GlyphIconsDetails(
+                glyphIconInfo = new GlyphIconInfo(
                         "OctIcon." + glyphIcon.getGlyphName(),
                         icon.unicodeToString(),
                         "OctIconView icon = new OctIconView(OctIcon." + glyphIcon.getGlyphName() + ");",
@@ -199,10 +194,10 @@ public class GlyphsBrowserAppModel {
             } else if (glyphIcon instanceof MaterialDesignIconView) {
                 MaterialDesignIcon icon = MaterialDesignIcon.valueOf(glyphIcon.getGlyphName());
                 ObservableList<Node> preview = FXCollections.observableArrayList();
-                for (String previewSize : getGlyphPreviewSizes()) {
+                for (String previewSize : GLYPH_PREVIEW_SIZES) {
                     preview.add(MaterialDesignIconFactory.get().createIcon(icon, previewSize));
                 }
-                glyphIconsDetails = new GlyphIconsDetails(
+                glyphIconInfo = new GlyphIconInfo(
                         "MaterialDesignIcon." + glyphIcon.getGlyphName(),
                         icon.unicodeToString(),
                         "MaterialDesignIconView icon = new MaterialDesignIconView(MaterialDesignIcon." + glyphIcon.getGlyphName() + ");",
@@ -211,10 +206,10 @@ public class GlyphsBrowserAppModel {
             } else if (glyphIcon instanceof MaterialIconView) {
                 MaterialIcon icon = MaterialIcon.valueOf(glyphIcon.getGlyphName());
                 ObservableList<Node> preview = FXCollections.observableArrayList();
-                for (String previewSize : getGlyphPreviewSizes()) {
+                for (String previewSize : GLYPH_PREVIEW_SIZES) {
                     preview.add(MaterialIconFactory.get().createIcon(icon, previewSize));
                 }
-                glyphIconsDetails = new GlyphIconsDetails(
+                glyphIconInfo = new GlyphIconInfo(
                         "MaterialIcon." + glyphIcon.getGlyphName(),
                         icon.unicodeToString(),
                         "MaterialIconView icon = new MaterialIconView(MaterialIcon." + glyphIcon.getGlyphName() + ");",
@@ -223,10 +218,10 @@ public class GlyphsBrowserAppModel {
             } else if (glyphIcon instanceof Icons525View) {
                 Icons525 icon = Icons525.valueOf(glyphIcon.getGlyphName());
                 ObservableList<Node> preview = FXCollections.observableArrayList();
-                for (String previewSize : getGlyphPreviewSizes()) {
+                for (String previewSize : GLYPH_PREVIEW_SIZES) {
                     preview.add(Icon525Factory.get().createIcon(icon, previewSize));
                 }
-                glyphIconsDetails = new GlyphIconsDetails(
+                glyphIconInfo = new GlyphIconInfo(
                         "Icons525." + glyphIcon.getGlyphName(),
                         icon.unicodeToString(),
                         "Icons525View icon = new FontAwesomeIconView(Icons525." + glyphIcon.getGlyphName() + ");",
@@ -235,10 +230,10 @@ public class GlyphsBrowserAppModel {
             } else if (glyphIcon instanceof WeatherIconView) {
                 WeatherIcon icon = WeatherIcon.valueOf(glyphIcon.getGlyphName());
                 ObservableList<Node> preview = FXCollections.observableArrayList();
-                for (String previewSize : getGlyphPreviewSizes()) {
+                for (String previewSize : GLYPH_PREVIEW_SIZES) {
                     preview.add(WeatherIconFactory.get().createIcon(icon, previewSize));
                 }
-                glyphIconsDetails = new GlyphIconsDetails(
+                glyphIconInfo = new GlyphIconInfo(
                         "WeatherIcon." + glyphIcon.getGlyphName(),
                         icon.unicodeToString(),
                         "WeatherIconView icon = new WeatherIconView(WeatherIcon." + glyphIcon.getGlyphName() + ");",
@@ -246,45 +241,7 @@ public class GlyphsBrowserAppModel {
                         preview);
             }
         }
-        return Optional.of(glyphIconsDetails);
-    }
-
-    public static class GlyphIconsDetails {
-
-        private final String glyphNameName;
-        private final String glyphUnicode;
-        private final String glyphCode;
-        private final String glyphFactoryCode;
-        private final ObservableList<Node> previewGlyphs;
-
-        public GlyphIconsDetails(String glyphNameName, String glyphUnicode, String glyphCode, String glyphFactoryCode, ObservableList<Node> previewGlyphs) {
-            this.glyphNameName = glyphNameName;
-            this.glyphUnicode = glyphUnicode;
-            this.glyphCode = glyphCode;
-            this.glyphFactoryCode = glyphFactoryCode;
-            this.previewGlyphs = previewGlyphs;
-        }
-
-        public String getGlyphNameName() {
-            return glyphNameName;
-        }
-
-        public String getGlyphUnicode() {
-            return glyphUnicode;
-        }
-
-        public String getGlyphCode() {
-            return glyphCode;
-        }
-
-        public String getGlyphFactoryCode() {
-            return glyphFactoryCode;
-        }
-
-        public ObservableList<Node> getPreviewGlyphs() {
-            return previewGlyphs;
-        }
-
+        return Optional.of(glyphIconInfo);
     }
 
 }

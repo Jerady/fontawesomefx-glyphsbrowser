@@ -126,7 +126,7 @@ public class GlyphsBrowser extends VBox {
         });
         glyphsPackListView.getSelectionModel().selectFirst();
         model.selectedGlyphIconProperty().addListener((ObservableValue<? extends GlyphIcon> observable, GlyphIcon oldValue, GlyphIcon newValue) -> {
-            Optional<GlyphsBrowserAppModel.GlyphIconsDetails> value = model.getGlyphIconsDetails(newValue);
+            Optional<GlyphIconInfo> value = model.getGlyphIconInfo(newValue);
             if (value.isPresent()) {
                 showGlyphIconsDetails(value.get());
             }
@@ -135,14 +135,14 @@ public class GlyphsBrowser extends VBox {
         copyFactoryCodeButton.visibleProperty().bind(glyphFactoryCodeLabel.textProperty().isEmpty().not());
     }
 
-    private void showGlyphIconsDetails(GlyphsBrowserAppModel.GlyphIconsDetails glyphIconsDetails) {
-        if (glyphIconsDetails != null) {
+    private void showGlyphIconsDetails(GlyphIconInfo glyphIconInfo) {
+        if (glyphIconInfo != null) {
             {
-                glyphNameLabel.setText(glyphIconsDetails.getGlyphNameName());
-                glyphUnicodeLabel.setText(glyphIconsDetails.getGlyphUnicode());
-                glyphCodeLabel.setText(glyphIconsDetails.getGlyphCode());
-                glyphFactoryCodeLabel.setText(glyphIconsDetails.getGlyphFactoryCode());
-                glyphPreviewPane.getChildren().setAll(glyphIconsDetails.getPreviewGlyphs());
+                glyphNameLabel.setText(glyphIconInfo.getGlyphNameName());
+                glyphUnicodeLabel.setText(glyphIconInfo.getGlyphUnicode());
+                glyphCodeLabel.setText(glyphIconInfo.getGlyphCode());
+                glyphFactoryCodeLabel.setText(glyphIconInfo.getGlyphFactoryCode());
+                glyphPreviewPane.getChildren().setAll(glyphIconInfo.getPreviewGlyphs());
             }
         }
     }
@@ -166,7 +166,7 @@ public class GlyphsBrowser extends VBox {
         fontUrlLabel.setText(glyphPack.getURL());
         fontWhatsNewLabel.setText(glyphPack.getWhatsNew());
         if (!glyphPack.getGlyphNodes().isEmpty()) {
-            Optional<GlyphsBrowserAppModel.GlyphIconsDetails> value = model.getGlyphIconsDetails(glyphPack.getGlyphNodes().get(0));
+            Optional<GlyphIconInfo> value = model.getGlyphIconInfo(glyphPack.getGlyphNodes().get(0));
             if (value.isPresent()) {
                 showGlyphIconsDetails(value.get());
             }
