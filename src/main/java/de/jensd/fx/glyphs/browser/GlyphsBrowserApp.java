@@ -25,9 +25,11 @@ public class GlyphsBrowserApp extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        GlyphsBrowser iconsBrowser = new GlyphsBrowser();
-        iconsBrowser.setHostServices(getHostServices());
-        Scene scene = new Scene(iconsBrowser, 800, 600);
+        GlyphBrowserAppModel model = new GlyphBrowserAppModel();
+        model.setHostServices(getHostServices());
+        
+        GlyphsBrowser iconsBrowser = new GlyphsBrowser(model);
+        Scene scene = new Scene(iconsBrowser, 1024, 600);
         scene.getStylesheets().add("/styles/iconsbrowser.css");
         primaryStage.setTitle("FontAwesomeFX Glyphs Browser 0.1");
         primaryStage.setScene(scene);

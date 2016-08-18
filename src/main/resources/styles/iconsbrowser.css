@@ -57,6 +57,10 @@
     -fx-background-color: white;
 }
 
+.glyphs-preview-view {
+    -fx-background-color: white;
+}
+
 .glyphs-scroll-pane {
     -fx-effect: innershadow( gaussian, rgba( 0, 0, 0, 0.1 ), 10, 0, 2, 1 );
 }
@@ -86,8 +90,35 @@
     -fx-font-size: 1.4em;
 }
 
+.glyph-code-label{
+    -fx-font-family: "Courier New";
+    -fx-font-weight: bold;
+    -fx-font-size: 1em;
+}
+
 .hyperlink:visited, .hyperlink:pressed{
     -fx-border: null;
+}
+
+.copy-label, .copy-label:focused {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0px;
+    -fx-padding: 0px;
+    -fx-text-fill: black;
+}
+
+.choice-button{
+    -fx-font-size: 0.8em;
+    -fx-background-radius: 10, 9, 8;
+    -fx-padding: 3px 15px 3px 15px;
+    -fx-background-color: rgb(101,101,101);
+    -fx-text-fill: white;
+}
+
+
+.choice-button:pressed{
+    -fx-background-color: rgb(121,121,121);
+    -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.6) , 6, 0.0 , 1, 1 );
 }
 
 /*******************************************************************************
@@ -164,13 +195,33 @@
     -fx-background-radius: 2em;
 }
 
+/*******************************************************************************
+ *                                                                             *
+ * Hyperlink                                                           *
+ *                                                                             *
+ ******************************************************************************/
+
+.hyperlink:visited {
+    -fx-text-fill: -fx-accent;
+}
+.hyperlink:hover,
+.hyperlink:visited,
+.hyperlink:hover:visited {
+    -fx-underline: false;
+}
+
+.hyperlink:focused {
+    -fx-border-color: null;
+    -fx-border-style: none;
+}
+
 
 /*******************************************************************************
  *                                                                             *
  * GlyphsPack ListCell                                                           *
  *                                                                             *
  ******************************************************************************/
-.list-cell{
+.list-cell {
     -fx-font-size: 1.2em;
     -fx-font-weight: normal;
     -fx-background-color: null;
@@ -182,6 +233,6 @@
     -fx-text-fill: -fx-accent;
 }
 
-.list-cell:empty{
+.list-cell:empty {
     -fx-background-color: null;
 }
