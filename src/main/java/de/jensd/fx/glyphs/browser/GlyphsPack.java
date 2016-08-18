@@ -20,7 +20,7 @@ import javafx.collections.ObservableList;
  *
  * @author Jens Deters
  */
-public class GlyphPack {
+public class GlyphsPack {
 
     public enum Type {
         FONT_AWESOME, OCTICON, MATERIAL_DESIGN_ICONS, MATERIAL_ICONS, WEATHER_ICONS, ICONS525;
@@ -29,7 +29,7 @@ public class GlyphPack {
     private final FontInfo fontInfo;
     private final ObservableList<GlyphIcon> glyphNodesList;
 
-    public GlyphPack(FontInfo fontInfo, ObservableList<GlyphIcon> glyphNodesList) {
+    public GlyphsPack(FontInfo fontInfo, ObservableList<GlyphIcon> glyphNodesList) {
         this.fontInfo = fontInfo;
         this.glyphNodesList = glyphNodesList;
     }

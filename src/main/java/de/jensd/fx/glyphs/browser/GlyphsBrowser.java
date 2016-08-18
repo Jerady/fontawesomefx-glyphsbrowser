@@ -14,26 +14,9 @@
 package de.jensd.fx.glyphs.browser;
 
 import de.jensd.fx.glyphs.GlyphIcon;
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
-import de.jensd.fx.glyphs.fontawesome.utils.FontAwesomeIconFactory;
-import de.jensd.fx.glyphs.icons525.Icons525;
-import de.jensd.fx.glyphs.icons525.Icons525View;
-import de.jensd.fx.glyphs.icons525.utils.Icon525Factory;
-import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIcon;
-import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView;
-import de.jensd.fx.glyphs.materialdesignicons.utils.MaterialDesignIconFactory;
-import de.jensd.fx.glyphs.materialicons.MaterialIcon;
-import de.jensd.fx.glyphs.materialicons.MaterialIconView;
-import de.jensd.fx.glyphs.materialicons.utils.MaterialIconFactory;
-import de.jensd.fx.glyphs.octicons.OctIcon;
-import de.jensd.fx.glyphs.octicons.OctIconView;
-import de.jensd.fx.glyphs.octicons.utils.OctIconFactory;
-import de.jensd.fx.glyphs.weathericons.WeatherIcon;
-import de.jensd.fx.glyphs.weathericons.WeatherIconView;
-import de.jensd.fx.glyphs.weathericons.utils.WeatherIconFactory;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -59,13 +42,6 @@ import org.controlsfx.control.GridView;
  * @author Jens Deters
  */
 public class GlyphsBrowser extends VBox {
-
-    public final static String FONTAWESOME_PROPERTIES = "/de/jensd/fx/glyphs/fontawesome/fontinfo.properties";
-    public final static String ICONS525_PROPERTIES = "/de/jensd/fx/glyphs/icons525/fontinfo.properties";
-    public final static String MATERIALDESIGNFONT_PROPERTIES = "/de/jensd/fx/glyphs/materialdesignicons/fontinfo.properties";
-    public final static String MATERIALICONS_PROPERTIES = "/de/jensd/fx/glyphs/materialicons/fontinfo.properties";
-    public final static String OCTICONS_PROPERTIES = "/de/jensd/fx/glyphs/octicons/fontinfo.properties";
-    public final static String WEATHERICONS_PROPERTIES = "/weathericons.fontinfo.properties";
 
     @FXML
     private Label numberOfIconsLabel;
@@ -98,23 +74,23 @@ public class GlyphsBrowser extends VBox {
     @FXML
     private Button copyFactoryCodeButton;
     @FXML
-    private ListView<GlyphPack> glyphsPackListView;
+    private ListView<GlyphsPack> glyphsPackListView;
     @FXML
     private GridView<GlyphIcon> glyphsGridView;
     @FXML
     private Pane glyphPreviewPane;
 
-    private final GlyphBrowserAppModel model;
+    private final GlyphsBrowserAppModel model;
 
-    public GlyphsBrowser(GlyphBrowserAppModel glyphPacksModel) {
+    public GlyphsBrowser(GlyphsBrowserAppModel glyphPacksModel) {
         this.model = glyphPacksModel;
         init();
     }
 
     private void init() {
         try {
-            ResourceBundle resourceBundle = ResourceBundle.getBundle("i18n/messages");
-            URL fxmlURL = getClass().getResource("/fxml/glyphs_browser.fxml");
+            ResourceBundle resourceBundle = ResourceBundle.getBundle(GlyphsBrowserAppModel.RESOURCE_BUNDLE);
+            URL fxmlURL = getClass().getResource(GlyphsBrowserAppModel.GLYPH_BROWSER_FXML);
             FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL, resourceBundle);
             fxmlLoader.setRoot(this);
             fxmlLoader.setController(this);
@@ -141,83 +117,33 @@ public class GlyphsBrowser extends VBox {
         });
         glyphSizeSlider.valueProperty().bindBidirectional(model.glyphSizeProperty());
         glyphSizeSliderValueLabel.textProperty().bind(glyphSizeSlider.valueProperty().asString("%.0f"));
-        glyphsPackListView.setItems(model.getGlyphPacks());
+        glyphsPackListView.setItems(model.getGlyphsPacks());
         glyphsPackListView.itemsProperty().addListener((Observable observable) -> {
             glyphsPackListView.getSelectionModel().selectFirst();
         });
-        glyphsPackListView.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends GlyphPack> observable, GlyphPack oldValue, GlyphPack newValue) -> {
+        glyphsPackListView.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends GlyphsPack> observable, GlyphsPack oldValue, GlyphsPack newValue) -> {
             updateBrowser(glyphsPackListView.getSelectionModel().getSelectedItem());
         });
         glyphsPackListView.getSelectionModel().selectFirst();
         model.selectedGlyphIconProperty().addListener((ObservableValue<? extends GlyphIcon> observable, GlyphIcon oldValue, GlyphIcon newValue) -> {
-            showGlyphIconsDetails(newValue);
+            Optional<GlyphsBrowserAppModel.GlyphIconsDetails> value = model.getGlyphIconsDetails(newValue);
+            if (value.isPresent()) {
+                showGlyphIconsDetails(value.get());
+            }
         });
         copyCodeButton.visibleProperty().bind(glyphCodeLabel.textProperty().isEmpty().not());
         copyFactoryCodeButton.visibleProperty().bind(glyphFactoryCodeLabel.textProperty().isEmpty().not());
     }
 
-    private void showGlyphIconsDetails(GlyphIcon glyphIcon) {
-        clearGlyphIconsDetails();
-        if (glyphIcon != null) {
-            String glyphNameName = "";
-            String glyphUnicode = "";
-            String glyphCode = "";
-            String glyphFactoryCode = "";
-            if (glyphIcon instanceof FontAwesomeIconView) {
-                FontAwesomeIcon icon = FontAwesomeIcon.valueOf(glyphIcon.getGlyphName());
-                for (String previewSize : model.getGlyphPreviewSizes()) {
-                    glyphPreviewPane.getChildren().add(FontAwesomeIconFactory.get().createIcon(icon, previewSize));
-                }
-                glyphNameName = "FontAwesomeIcon." + glyphIcon.getGlyphName();
-                glyphUnicode = icon.unicodeToString();
-                glyphCode = "FontAwesomeIconView icon = new FontAwesomeIconView(" + glyphNameName + ");";
-                glyphFactoryCode = "Text icon = FontAwesomeIconFactory.get().createIcon(" + glyphNameName + ");";
-
-            } else if (glyphIcon instanceof OctIconView) {
-                OctIcon icon = OctIcon.valueOf(glyphIcon.getGlyphName());
-                for (String previewSize : model.getGlyphPreviewSizes()) {
-                    glyphPreviewPane.getChildren().add(OctIconFactory.get().createIcon(icon, previewSize));
-                }
-                glyphNameName = "OctIcon." + glyphIcon.getGlyphName();
-                glyphUnicode = icon.unicodeToString();
-                glyphCode = "OctIconView icon = new OctIconView(" + glyphNameName + ");";
-            } else if (glyphIcon instanceof MaterialDesignIconView) {
-                MaterialDesignIcon icon = MaterialDesignIcon.valueOf(glyphIcon.getGlyphName());
-                for (String previewSize : model.getGlyphPreviewSizes()) {
-                    glyphPreviewPane.getChildren().add(MaterialDesignIconFactory.get().createIcon(icon, previewSize));
-                }
-                glyphNameName = "MaterialDesignIcon." + glyphIcon.getGlyphName();
-                glyphUnicode = icon.unicodeToString();
-                glyphCode = "MaterialDesignIconView icon = new MaterialDesignIconView(" + glyphNameName + ");";
-            } else if (glyphIcon instanceof MaterialIconView) {
-                MaterialIcon icon = MaterialIcon.valueOf(glyphIcon.getGlyphName());
-                for (String previewSize : model.getGlyphPreviewSizes()) {
-                    glyphPreviewPane.getChildren().add(MaterialIconFactory.get().createIcon(icon, previewSize));
-                }
-                glyphNameName = "MaterialIcon." + glyphIcon.getGlyphName();
-                glyphUnicode = icon.unicodeToString();
-                glyphCode = "MaterialIconView icon = new MaterialIconView(" + glyphNameName + ");";
-            } else if (glyphIcon instanceof Icons525View) {
-                Icons525 icon = Icons525.valueOf(glyphIcon.getGlyphName());
-                for (String previewSize : model.getGlyphPreviewSizes()) {
-                    glyphPreviewPane.getChildren().add(Icon525Factory.get().createIcon(icon, previewSize));
-                }
-                glyphNameName = "Icons525." + glyphIcon.getGlyphName();
-                glyphUnicode = icon.unicodeToString();
-                glyphCode = "Icons525View icon = new Icons525IconView(" + glyphNameName + ");";
-            } else if (glyphIcon instanceof WeatherIconView) {
-                WeatherIcon icon = WeatherIcon.valueOf(glyphIcon.getGlyphName());
-                for (String previewSize : model.getGlyphPreviewSizes()) {
-                    glyphPreviewPane.getChildren().add(WeatherIconFactory.get().createIcon(icon, previewSize));
-                }
-                glyphNameName = "WeatherIcon." + glyphIcon.getGlyphName();
-                glyphUnicode = icon.unicodeToString();
-                glyphCode = "WeatherIconView icon = new WeatherIconIconView(" + glyphNameName + ");";
+    private void showGlyphIconsDetails(GlyphsBrowserAppModel.GlyphIconsDetails glyphIconsDetails) {
+        if (glyphIconsDetails != null) {
+            {
+                glyphNameLabel.setText(glyphIconsDetails.getGlyphNameName());
+                glyphUnicodeLabel.setText(glyphIconsDetails.getGlyphUnicode());
+                glyphCodeLabel.setText(glyphIconsDetails.getGlyphCode());
+                glyphFactoryCodeLabel.setText(glyphIconsDetails.getGlyphFactoryCode());
+                glyphPreviewPane.getChildren().setAll(glyphIconsDetails.getPreviewGlyphs());
             }
-            glyphNameLabel.setText(glyphNameName);
-            glyphUnicodeLabel.setText(glyphUnicode);
-            glyphCodeLabel.setText(glyphCode);
-            glyphFactoryCodeLabel.setText(glyphFactoryCode);
         }
     }
 
@@ -229,7 +155,7 @@ public class GlyphsBrowser extends VBox {
         glyphFactoryCodeLabel.setText("");
     }
 
-    private void updateBrowser(GlyphPack glyphPack) {
+    private void updateBrowser(GlyphsPack glyphPack) {
         clearGlyphIconsDetails();
         glyphsGridView.setItems(glyphPack.getGlyphNodes());
         numberOfIconsLabel.setText(glyphPack.getNumberOfIcons() + "");
@@ -240,7 +166,10 @@ public class GlyphsBrowser extends VBox {
         fontUrlLabel.setText(glyphPack.getURL());
         fontWhatsNewLabel.setText(glyphPack.getWhatsNew());
         if (!glyphPack.getGlyphNodes().isEmpty()) {
-            showGlyphIconsDetails(glyphPack.getGlyphNodes().get(0));
+            Optional<GlyphsBrowserAppModel.GlyphIconsDetails> value = model.getGlyphIconsDetails(glyphPack.getGlyphNodes().get(0));
+            if (value.isPresent()) {
+                showGlyphIconsDetails(value.get());
+            }
         }
     }
 

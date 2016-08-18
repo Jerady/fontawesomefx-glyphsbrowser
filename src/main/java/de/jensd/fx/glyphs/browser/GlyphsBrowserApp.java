@@ -25,12 +25,12 @@ public class GlyphsBrowserApp extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        GlyphBrowserAppModel model = new GlyphBrowserAppModel();
+        GlyphsBrowserAppModel model = new GlyphsBrowserAppModel();
         model.setHostServices(getHostServices());
         GlyphsBrowser iconsBrowser = new GlyphsBrowser(model);
-        Scene scene = new Scene(iconsBrowser, GlyphBrowserAppModel.DEFAULT_WITH, GlyphBrowserAppModel.DEFAULT_HEIGHT);
-        scene.getStylesheets().add(GlyphBrowserAppModel.APP_STYLES);
-        primaryStage.setTitle(GlyphBrowserAppModel.APP_NAME + " // " +  GlyphBrowserAppModel.APP_VERSION);
+        Scene scene = new Scene(iconsBrowser, GlyphsBrowserAppModel.DEFAULT_WITH, GlyphsBrowserAppModel.DEFAULT_HEIGHT);
+        scene.getStylesheets().add(GlyphsBrowserAppModel.APP_STYLES);
+        primaryStage.setTitle(GlyphsBrowserAppModel.APP_NAME + " // " +  GlyphsBrowserAppModel.APP_VERSION);
         primaryStage.setScene(scene);
         primaryStage.show();
     }

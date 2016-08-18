@@ -6,11 +6,18 @@ repositories {
     mavenCentral()
 }
 
+task fatJar(type: Jar) {
+    baseName = project.name + '-all'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+    manifest {
+        attributes 'Implementation-Title': 'Gradle Quickstart', 'Implementation-Version': '1.0'
+        attributes 'Main-Class': 'de.jensd.fx.glyphs.browser.GlyphsBrowserApp'
+    }
+}
 mainClassName = 'de.jensd.fx.glyphs.browser.GlyphsBrowserApp'
-
 sourceCompatibility = '1.8'
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
-
 
 if (!hasProperty('mainClass')) {
     ext.mainClass = 'de.jensd.fx.glyphs.browser.GlyphsBrowserApp'
