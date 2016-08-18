@@ -28,5 +28,5 @@ dependencies {
     compile 'de.jensd:fontawesomefx-octicons:4.3.0'
     compile 'de.jensd:fontawesomefx-icons525:2.6.0'
     compile 'de.jensd:fontawesomefx-weathericons:2.0-3'
-    compile 'org.controlsfx:controlsfx:8.40.10'
+    compile 'org.controlsfx:controlsfx:8.40.11'
 }
