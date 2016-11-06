@@ -15,6 +15,9 @@ task fatJar(type: Jar) {
         attributes 'Main-Class': 'de.jensd.fx.glyphs.browser.GlyphsBrowserApp'
     }
 }
+
+version '1.1.0'
+
 mainClassName = 'de.jensd.fx.glyphs.browser.GlyphsBrowserApp'
 sourceCompatibility = '1.8'
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'

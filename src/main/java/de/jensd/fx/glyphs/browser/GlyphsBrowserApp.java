@@ -30,7 +30,7 @@ public class GlyphsBrowserApp extends Application {
         GlyphsBrowser iconsBrowser = new GlyphsBrowser(model);
         Scene scene = new Scene(iconsBrowser, GlyphsBrowserAppModel.DEFAULT_WITH, GlyphsBrowserAppModel.DEFAULT_HEIGHT);
         scene.getStylesheets().add(GlyphsBrowserAppModel.APP_STYLES);
-        primaryStage.setTitle(GlyphsBrowserAppModel.APP_NAME + " // " +  GlyphsBrowserAppModel.APP_VERSION);
+        primaryStage.setTitle(GlyphsBrowserAppModel.APP_NAME + " " +  GlyphsBrowserAppModel.APP_VERSION);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
