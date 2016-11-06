@@ -52,6 +52,10 @@ public class FontInfo {
         return fontInfoProperties.getProperty("font.version", "no font version");
     }
 
+    public String getLicense() {
+        return fontInfoProperties.getProperty("font.license", "no font license");
+    }
+
     public String getReleaseDate() {
         return fontInfoProperties.getProperty("font.released", "no font released");
     }
@@ -74,6 +78,7 @@ public class FontInfo {
         builder.append("Fontname     : ").append(getName()).append('\n');
         builder.append("Fontfamily   : ").append(getFamiliy()).append('\n');
         builder.append("Version      : ").append(getVersion()).append('\n');
+        builder.append("License      : ").append(getLicense()).append('\n');
         builder.append("Release Date : ").append(getReleaseDate()).append('\n');
         builder.append("URL          : ").append(getURL()).append('\n');
         builder.append("Description  : ").append(getDescription()).append('\n');

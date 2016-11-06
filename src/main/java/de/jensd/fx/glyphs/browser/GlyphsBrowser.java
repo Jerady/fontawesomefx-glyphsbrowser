@@ -56,6 +56,8 @@ public class GlyphsBrowser extends VBox {
     @FXML
     private Label fontVersionLabel;
     @FXML
+    private Label fontLicenseLabel;
+    @FXML
     private Label fontReleaseDateLabel;
     @FXML
     private Hyperlink fontUrlLabel;
@@ -162,6 +164,7 @@ public class GlyphsBrowser extends VBox {
         fontNameLabel.setText(glyphPack.getName());
         fontFamilyLabel.setText(glyphPack.getFamiliy());
         fontVersionLabel.setText(glyphPack.getVersion());
+        fontLicenseLabel.setText(glyphPack.getLicense());
         fontReleaseDateLabel.setText(glyphPack.getReleaseDate());
         fontUrlLabel.setText(glyphPack.getURL());
         fontWhatsNewLabel.setText(glyphPack.getWhatsNew());

@@ -34,7 +34,6 @@ public class GlyphsPack {
         this.glyphNodesList = glyphNodesList;
     }
 
-
     public FontInfo getFontInfo() {
         return fontInfo;
     }
@@ -57,6 +56,10 @@ public class GlyphsPack {
 
     public String getVersion() {
         return fontInfo.getVersion();
+    }
+
+    public String getLicense() {
+        return fontInfo.getLicense();
     }
 
     public String getReleaseDate() {

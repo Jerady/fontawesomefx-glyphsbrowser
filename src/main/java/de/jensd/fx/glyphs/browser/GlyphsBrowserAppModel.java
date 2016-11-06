@@ -61,9 +61,9 @@ public class GlyphsBrowserAppModel {
     public final static String MATERIALDESIGNFONT_PROPERTIES = "/de/jensd/fx/glyphs/materialdesignicons/fontinfo.properties";
     public final static String MATERIALICONS_PROPERTIES = "/de/jensd/fx/glyphs/materialicons/fontinfo.properties";
     public final static String OCTICONS_PROPERTIES = "/de/jensd/fx/glyphs/octicons/fontinfo.properties";
-    public final static String WEATHERICONS_PROPERTIES = "/weathericons.fontinfo.properties";
-    public final static String APP_VERSION = "1.0";
-    public final static String APP_NAME = "FontAwesomeFX 8.12 - GlyphsBrowser";
+    public final static String WEATHERICONS_PROPERTIES = "/de/jensd/fx/glyphs/weathericons/fontinfo.properties";
+    public final static String APP_VERSION = "v1.1.0";
+    public final static String APP_NAME = "FontAwesomeFX 8.13 // GlyphsBrowser";
     public final static String APP_STYLES = "/styles/iconsbrowser.css";
     public final static String RESOURCE_BUNDLE = "i18n/messages";
     public final static String GLYPH_BROWSER_FXML = "/fxml/glyphs_browser.fxml";
@@ -89,37 +89,39 @@ public class GlyphsBrowserAppModel {
                 .sorted(new FontAwesomeIconNameComparator())
                 .map(i -> createIconView(new FontAwesomeIconView(i)))
                 .collect(Collectors.toList());
-        getGlyphsPacks().add(new GlyphsPack(new FontInfo(FONTAWESOME_PROPERTIES), FXCollections.observableArrayList(fontAwesomeList)));
 
         List<GlyphIcon> weatherIconsList = Stream.of(WeatherIcon.values())
                 .sorted(new WeatherIconNameComparator())
                 .map(i -> createIconView(new WeatherIconView(i)))
                 .collect(Collectors.toList());
-        getGlyphsPacks().add(new GlyphsPack(new FontInfo(WEATHERICONS_PROPERTIES), FXCollections.observableArrayList(weatherIconsList)));
 
         List<GlyphIcon> materialDesignIconsList = Stream.of(MaterialDesignIcon.values())
                 .sorted(new MaterialDesignIconNameComparator())
                 .map(i -> createIconView(new MaterialDesignIconView(i)))
                 .collect(Collectors.toList());
-        getGlyphsPacks().add(new GlyphsPack(new FontInfo(MATERIALDESIGNFONT_PROPERTIES), FXCollections.observableArrayList(materialDesignIconsList)));
 
         List<GlyphIcon> materialIconsList = Stream.of(MaterialIcon.values())
                 .sorted(new MaterialIconNameComparator())
                 .map(i -> createIconView(new MaterialIconView(i)))
                 .collect(Collectors.toList());
-        getGlyphsPacks().add(new GlyphsPack(new FontInfo(MATERIALICONS_PROPERTIES), FXCollections.observableArrayList(materialIconsList)));
 
         List<GlyphIcon> octIconsList = Stream.of(OctIcon.values())
                 .sorted(new OctIconNameComparator())
                 .map(i -> createIconView(new OctIconView(i)))
                 .collect(Collectors.toList());
-        getGlyphsPacks().add(new GlyphsPack(new FontInfo(OCTICONS_PROPERTIES), FXCollections.observableArrayList(octIconsList)));
 
         List<GlyphIcon> icons525List = Stream.of(Icons525.values())
                 .sorted(new Icon525NameComparator())
                 .map(i -> createIconView(new Icons525View(i)))
                 .collect(Collectors.toList());
+
+
+        getGlyphsPacks().add(new GlyphsPack(new FontInfo(FONTAWESOME_PROPERTIES), FXCollections.observableArrayList(fontAwesomeList)));
         getGlyphsPacks().add(new GlyphsPack(new FontInfo(ICONS525_PROPERTIES), FXCollections.observableArrayList(icons525List)));
+        getGlyphsPacks().add(new GlyphsPack(new FontInfo(MATERIALDESIGNFONT_PROPERTIES), FXCollections.observableArrayList(materialDesignIconsList)));
+        getGlyphsPacks().add(new GlyphsPack(new FontInfo(MATERIALICONS_PROPERTIES), FXCollections.observableArrayList(materialIconsList)));
+        getGlyphsPacks().add(new GlyphsPack(new FontInfo(OCTICONS_PROPERTIES), FXCollections.observableArrayList(octIconsList)));
+        getGlyphsPacks().add(new GlyphsPack(new FontInfo(WEATHERICONS_PROPERTIES), FXCollections.observableArrayList(weatherIconsList)));
 
     }
 

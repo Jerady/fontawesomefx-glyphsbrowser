@@ -29,11 +29,11 @@ task execute(type:JavaExec) {
 }
 
 dependencies {
-    compile 'de.jensd:fontawesomefx-fontawesome:4.6.3'
-    compile 'de.jensd:fontawesomefx-materialdesignfont:1.6.50'
-    compile 'de.jensd:fontawesomefx-materialicons:2.2.0'
-    compile 'de.jensd:fontawesomefx-octicons:4.3.0'
-    compile 'de.jensd:fontawesomefx-icons525:2.6.0'
-    compile 'de.jensd:fontawesomefx-weathericons:2.0-3'
+    compile 'de.jensd:fontawesomefx-fontawesome:4.7.0'
+    compile 'de.jensd:fontawesomefx-icons525:3.0.0'
+    compile 'de.jensd:fontawesomefx-materialdesignfont:1.7.22'
+    compile 'de.jensd:fontawesomefx-materialicons:2.2.0-1'
+    compile 'de.jensd:fontawesomefx-octicons:4.3.0-1'
+    compile 'de.jensd:fontawesomefx-weathericons:2.0.10-1'
     compile 'org.controlsfx:controlsfx:8.40.11'
 }

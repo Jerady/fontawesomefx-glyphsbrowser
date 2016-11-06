@@ -25,13 +25,14 @@
                   <ListView fx:id="glyphsPackListView" style="-fx-background-color: null;" VBox.vgrow="ALWAYS" />
                     <GridPane hgap="5.0" VBox.vgrow="NEVER">
                         <columnConstraints>
-                            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0" />
+                            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="75.0" />
                             <ColumnConstraints hgrow="ALWAYS" />
                         </columnConstraints>
                         <rowConstraints>
                         <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="20.0" vgrow="NEVER" />
                         <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="20.0" vgrow="NEVER" />
                             <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="20.0" vgrow="NEVER" />
+                        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="20.0" vgrow="NEVER" />
                         <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="20.0" vgrow="NEVER" />
                         <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="20.0" vgrow="NEVER" />
                         <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="20.0" vgrow="NEVER" />
@@ -46,12 +47,14 @@
                         <Label fx:id="fontFamilyLabel" styleClass="value-label" text="fontFamilyLabel" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <Label styleClass="key-label" text="%fontinfo.label.Version" GridPane.rowIndex="3" />
                         <Label fx:id="fontVersionLabel" styleClass="value-label" text="fontVersionLabel" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <Label styleClass="key-label" text="%fontinfo.label.ReleaseDate" GridPane.rowIndex="4" />
-                        <Label fx:id="fontReleaseDateLabel" styleClass="value-label" text="fontReleaseDateLabel" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <Label styleClass="key-label" text="%fontinfo.label.Url" GridPane.rowIndex="5" />
-                        <Label styleClass="key-label" text="%fontinfo.label.WhatsnNew" GridPane.rowIndex="6" />
-                        <Label fx:id="fontWhatsNewLabel" styleClass="value-label" text="fontWhatsNewLabel" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                        <Hyperlink fx:id="fontUrlLabel" text="Hyperlink" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <Label styleClass="key-label" text="%fontinfo.label.ReleaseDate" GridPane.rowIndex="5" />
+                        <Label fx:id="fontReleaseDateLabel" styleClass="value-label" text="fontReleaseDateLabel" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <Label styleClass="key-label" text="%fontinfo.label.Url" GridPane.rowIndex="6" />
+                        <Label styleClass="key-label" text="%fontinfo.label.WhatsnNew" GridPane.rowIndex="7" />
+                        <Label fx:id="fontWhatsNewLabel" styleClass="value-label" text="fontWhatsNewLabel" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                        <Hyperlink fx:id="fontUrlLabel" text="Hyperlink" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <Label styleClass="key-label" text="%fontinfo.label.License" GridPane.rowIndex="4" />
+                        <Label fx:id="fontLicenseLabel" styleClass="value-label" text="fontLicenseLabel" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                         </children>
                     </GridPane>
                   <HBox alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="60.0">
