@@ -5,3 +5,4 @@ gradle/
 .nb-gradle/
 .gradle/
 .nb-gradle*
+.idea/

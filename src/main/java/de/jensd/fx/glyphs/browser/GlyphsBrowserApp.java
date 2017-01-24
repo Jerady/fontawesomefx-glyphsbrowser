@@ -13,8 +13,12 @@
  */
 package de.jensd.fx.glyphs.browser;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 /**
@@ -22,6 +26,15 @@ import javafx.stage.Stage;
  * @author Jens Deters
  */
 public class GlyphsBrowserApp extends Application {
+    public final static String TTF_PATH = "/ttf/Panton.otf";
+
+    static {
+        try {
+            Font.loadFont(GlyphsBrowserApp.class.getResource(TTF_PATH).openStream(), 10.0d);
+        } catch (IOException ex) {
+            Logger.getLogger(GlyphsBrowserApp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     @Override
     public void start(Stage primaryStage) {
