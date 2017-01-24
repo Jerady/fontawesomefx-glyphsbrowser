@@ -17,7 +17,7 @@ task fatJar(type: Jar) {
     }
 }
 
-version '1.1.0'
+version '1.1.1'
 
 mainClassName = 'de.jensd.fx.glyphs.browser.GlyphsBrowserApp'
 sourceCompatibility = '1.8'
