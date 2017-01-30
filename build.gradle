@@ -4,7 +4,7 @@ apply plugin: 'application'
 repositories {
     jcenter()
     mavenCentral()
-    mavenLocal()
+    //mavenLocal()
 }
 
 task fatJar(type: Jar) {
@@ -28,16 +28,17 @@ if (!hasProperty('mainClass')) {
 }
 
 task execute(type:JavaExec) {
-   main = mainClass
-   classpath = sourceSets.main.runtimeClasspath
+    main = mainClass
+    classpath = sourceSets.main.runtimeClasspath
 }
 
 dependencies {
-    compile 'de.jensd:fontawesomefx-fontawesome:4.7.0-2'
-    compile 'de.jensd:fontawesomefx-icons525:3.0.0-1'
-    compile 'de.jensd:fontawesomefx-materialdesignfont:1.7.22-1'
-    compile 'de.jensd:fontawesomefx-materialicons:2.2.0-2'
-    compile 'de.jensd:fontawesomefx-octicons:4.3.0-2'
-    compile 'de.jensd:fontawesomefx-weathericons:2.0.10-2'
+    compile 'de.jensd:fontawesomefx-fontawesome:4.7.0-3'
+    compile 'de.jensd:fontawesomefx-icons525:3.0.0-2'
+    compile 'de.jensd:fontawesomefx-materialdesignfont:1.7.22-2'
+    compile 'de.jensd:fontawesomefx-materialicons:2.2.0-3'
+    compile 'de.jensd:fontawesomefx-octicons:4.3.0-3'
+    compile 'de.jensd:fontawesomefx-weathericons:2.0.10-3'
+    compile 'de.jensd:fontawesomefx-controls:8.14'
     compile 'org.controlsfx:controlsfx:8.40.11'
 }

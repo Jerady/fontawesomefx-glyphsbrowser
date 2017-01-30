@@ -62,8 +62,8 @@ public class GlyphsBrowserAppModel {
     public final static String MATERIALICONS_PROPERTIES = "/de/jensd/fx/glyphs/materialicons/fontinfo.properties";
     public final static String OCTICONS_PROPERTIES = "/de/jensd/fx/glyphs/octicons/fontinfo.properties";
     public final static String WEATHERICONS_PROPERTIES = "/de/jensd/fx/glyphs/weathericons/fontinfo.properties";
-    public final static String APP_VERSION = "v1.1.0";
-    public final static String APP_NAME = "FontAwesomeFX 8.13 -- GlyphsBrowser";
+    public final static String APP_VERSION = "v1.2.0";
+    public final static String APP_NAME = "FontAwesomeFX 8.14 -- GlyphsBrowser";
     public final static String APP_STYLES = "/styles/iconsbrowser.css";
     public final static String RESOURCE_BUNDLE = "i18n/messages";
     public final static String GLYPH_BROWSER_FXML = "/fxml/glyphs_browser.fxml";
