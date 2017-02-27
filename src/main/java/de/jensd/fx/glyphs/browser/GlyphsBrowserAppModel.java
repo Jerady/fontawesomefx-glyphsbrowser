@@ -14,6 +14,8 @@
 package de.jensd.fx.glyphs.browser;
 
 import de.jensd.fx.glyphs.GlyphIcon;
+import de.jensd.fx.glyphs.emojione.EmojiOne;
+import de.jensd.fx.glyphs.emojione.EmojiOneView;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import de.jensd.fx.glyphs.fontawesome.utils.FontAwesomeIconFactory;
@@ -62,8 +64,9 @@ public class GlyphsBrowserAppModel {
     public final static String MATERIALICONS_PROPERTIES = "/de/jensd/fx/glyphs/materialicons/fontinfo.properties";
     public final static String OCTICONS_PROPERTIES = "/de/jensd/fx/glyphs/octicons/fontinfo.properties";
     public final static String WEATHERICONS_PROPERTIES = "/de/jensd/fx/glyphs/weathericons/fontinfo.properties";
-    public final static String APP_VERSION = "v1.2.0";
-    public final static String APP_NAME = "FontAwesomeFX 8.14 -- GlyphsBrowser";
+    public final static String EMOJIONE_PROPERTIES = "/de/jensd/fx/glyphs/emojione/fontinfo.properties";
+    public final static String APP_VERSION = "v1.3.0";
+    public final static String APP_NAME = "FontAwesomeFX 8.15 -- GlyphsBrowser";
     public final static String APP_STYLES = "/styles/iconsbrowser.css";
     public final static String RESOURCE_BUNDLE = "i18n/messages";
     public final static String GLYPH_BROWSER_FXML = "/fxml/glyphs_browser.fxml";
@@ -71,7 +74,6 @@ public class GlyphsBrowserAppModel {
     public final static int DEFAULT_HEIGHT = 600;
     public final static int DEFAULT_GLYPH_SIZE = 24;
     public final static String[] GLYPH_PREVIEW_SIZES = {"8px", "10px", "12px", "16px", "26px", "36px", "46px", "56px", "66px", "86px"};
-
 
     private ObservableList<GlyphsPack> glyphsPacks;
     private ObjectProperty<Number> glyphSizeProperty;
@@ -115,7 +117,11 @@ public class GlyphsBrowserAppModel {
                 .map(i -> createIconView(new Icons525View(i)))
                 .collect(Collectors.toList());
 
+        List<GlyphIcon> emojiOneList = Stream.of(EmojiOne.values())
+                .map(i -> createIconView(new EmojiOneView(i)))
+                .collect(Collectors.toList());
 
+        getGlyphsPacks().add(new GlyphsPack(new FontInfo(EMOJIONE_PROPERTIES), FXCollections.observableArrayList(emojiOneList)));
         getGlyphsPacks().add(new GlyphsPack(new FontInfo(FONTAWESOME_PROPERTIES), FXCollections.observableArrayList(fontAwesomeList)));
         getGlyphsPacks().add(new GlyphsPack(new FontInfo(ICONS525_PROPERTIES), FXCollections.observableArrayList(icons525List)));
         getGlyphsPacks().add(new GlyphsPack(new FontInfo(MATERIALDESIGNFONT_PROPERTIES), FXCollections.observableArrayList(materialDesignIconsList)));
@@ -177,7 +183,7 @@ public class GlyphsBrowserAppModel {
                 }
                 glyphIconInfo = new GlyphIconInfo(
                         "FontAwesomeIcon." + glyphIcon.getGlyphName(),
-                        icon.unicodeToString(),
+                        icon.unicode(),
                         "FontAwesomeIconView icon = new FontAwesomeIconView(FontAwesomeIcon." + glyphIcon.getGlyphName() + ");",
                         "Text icon = FontAwesomeIconFactory.get().createIcon(FontAwesomeIcon." + glyphIcon.getGlyphName() + ");",
                         preview);
@@ -189,7 +195,7 @@ public class GlyphsBrowserAppModel {
                 }
                 glyphIconInfo = new GlyphIconInfo(
                         "OctIcon." + glyphIcon.getGlyphName(),
-                        icon.unicodeToString(),
+                        icon.unicode(),
                         "OctIconView icon = new OctIconView(OctIcon." + glyphIcon.getGlyphName() + ");",
                         "Text icon = OctIconFactory.get().createIcon(OctIcon." + glyphIcon.getGlyphName() + ");",
                         preview);
@@ -201,7 +207,7 @@ public class GlyphsBrowserAppModel {
                 }
                 glyphIconInfo = new GlyphIconInfo(
                         "MaterialDesignIcon." + glyphIcon.getGlyphName(),
-                        icon.unicodeToString(),
+                        icon.unicode(),
                         "MaterialDesignIconView icon = new MaterialDesignIconView(MaterialDesignIcon." + glyphIcon.getGlyphName() + ");",
                         "Text icon = MaterialDesignIconFactory.get().createIcon(MaterialDesignIcon." + glyphIcon.getGlyphName() + ");",
                         preview);
@@ -213,7 +219,7 @@ public class GlyphsBrowserAppModel {
                 }
                 glyphIconInfo = new GlyphIconInfo(
                         "MaterialIcon." + glyphIcon.getGlyphName(),
-                        icon.unicodeToString(),
+                        icon.unicode(),
                         "MaterialIconView icon = new MaterialIconView(MaterialIcon." + glyphIcon.getGlyphName() + ");",
                         "Text icon = MaterialIconFactory.get().createIcon(MaterialIcon." + glyphIcon.getGlyphName() + ");",
                         preview);
@@ -225,7 +231,7 @@ public class GlyphsBrowserAppModel {
                 }
                 glyphIconInfo = new GlyphIconInfo(
                         "Icons525." + glyphIcon.getGlyphName(),
-                        icon.unicodeToString(),
+                        icon.unicode(),
                         "Icons525View icon = new FontAwesomeIconView(Icons525." + glyphIcon.getGlyphName() + ");",
                         "Text icon = Icons525Factory.get().createIcon(Icons525." + glyphIcon.getGlyphName() + ");",
                         preview);
@@ -237,9 +243,21 @@ public class GlyphsBrowserAppModel {
                 }
                 glyphIconInfo = new GlyphIconInfo(
                         "WeatherIcon." + glyphIcon.getGlyphName(),
-                        icon.unicodeToString(),
+                        icon.unicode(),
                         "WeatherIconView icon = new WeatherIconView(WeatherIcon." + glyphIcon.getGlyphName() + ");",
                         "Text icon = WeatherIconFactory.get().createIcon(WeatherIcon." + glyphIcon.getGlyphName() + ");",
+                        preview);
+            } else if (glyphIcon instanceof EmojiOneView) {
+                EmojiOne icon = EmojiOne.valueOf(glyphIcon.getGlyphName());
+                ObservableList<Node> preview = FXCollections.observableArrayList();
+                for (String previewSize : GLYPH_PREVIEW_SIZES) {
+                    preview.add(WeatherIconFactory.get().createIcon(icon, previewSize));
+                }
+                glyphIconInfo = new GlyphIconInfo(
+                        "EmojiOne." + glyphIcon.getGlyphName(),
+                        icon.unicode(),
+                        "EmojiOneView icon = new EmojiOneView(WeatherIcon." + glyphIcon.getGlyphName() + ");",
+                        "Text icon = EmojiOneViewFactory.get().createIcon(EmojiOne." + glyphIcon.getGlyphName() + ");",
                         preview);
             }
         }

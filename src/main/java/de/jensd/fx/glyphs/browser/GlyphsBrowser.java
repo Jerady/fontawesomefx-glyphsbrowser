@@ -70,8 +70,6 @@ public class GlyphsBrowser extends VBox {
     @FXML
     private TextField glyphFactoryCodeLabel;
     @FXML
-    private Label glyphUnicodeLabel;
-    @FXML
     private Button copyCodeButton;
     @FXML
     private Button copyFactoryCodeButton;
@@ -141,7 +139,6 @@ public class GlyphsBrowser extends VBox {
         if (glyphIconInfo != null) {
             {
                 glyphNameLabel.setText(glyphIconInfo.getGlyphNameName());
-                glyphUnicodeLabel.setText(glyphIconInfo.getGlyphUnicode());
                 glyphCodeLabel.setText(glyphIconInfo.getGlyphCode());
                 glyphFactoryCodeLabel.setText(glyphIconInfo.getGlyphFactoryCode());
                 glyphPreviewPane.getChildren().setAll(glyphIconInfo.getPreviewGlyphs());
@@ -152,7 +149,6 @@ public class GlyphsBrowser extends VBox {
     private void clearGlyphIconsDetails() {
         glyphPreviewPane.getChildren().clear();
         glyphNameLabel.setText("");
-        glyphUnicodeLabel.setText("");
         glyphCodeLabel.setText("");
         glyphFactoryCodeLabel.setText("");
     }
@@ -174,8 +170,17 @@ public class GlyphsBrowser extends VBox {
                 showGlyphIconsDetails(value.get());
             }
         }
+        model.selectedGlyphIconProperty().set(glyphPack.getGlyphNodes().get(0));
+        
     }
 
+    @FXML
+    public void onCopyUnicode() {
+        final ClipboardContent content = new ClipboardContent();
+        content.putString(model.selectedGlyphIconProperty().getValue().unicode());
+        model.getClipboard().setContent(content);
+    }
+    
     @FXML
     public void onCopyCode() {
         final ClipboardContent content = new ClipboardContent();

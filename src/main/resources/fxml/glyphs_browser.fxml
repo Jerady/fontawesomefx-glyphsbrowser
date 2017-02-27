@@ -77,6 +77,7 @@
                   <GridView fx:id="glyphsGridView" horizontalCellSpacing="8.0" styleClass="glyphs-grid-view" verticalCellSpacing="8.0" VBox.vgrow="ALWAYS" />
                   <VBox alignment="CENTER_LEFT" spacing="10.0" VBox.vgrow="NEVER">
                      <children>
+                        <HBox fx:id="glyphPreviewPane" alignment="CENTER" minHeight="-Infinity" prefHeight="100.0" spacing="20.0" styleClass="glyphs-preview-view" VBox.vgrow="ALWAYS" />
                         <HBox alignment="CENTER_LEFT">
                            <children>
                               <TextField fx:id="glyphNameLabel" editable="false" text="FontAwesomeIcon.BITBUCKET_SQUARE" HBox.hgrow="ALWAYS">
@@ -85,10 +86,13 @@
                                     <String fx:value="glyph-name-label" />
                                  </styleClass>
                               </TextField>
-                              <Label fx:id="glyphUnicodeLabel" alignment="CENTER_RIGHT" styleClass="glyph-code-label" text="\\uf172" />
                            </children>
                         </HBox>
-                        <HBox fx:id="glyphPreviewPane" alignment="CENTER" minHeight="-Infinity" prefHeight="100.0" spacing="20.0" styleClass="glyphs-preview-view" VBox.vgrow="ALWAYS" />
+                        <HBox alignment="CENTER_RIGHT" >
+                           <children>
+                              <Button fx:id="copyUnicodeCodeButton" mnemonicParsing="false" onAction="#onCopyUnicode" styleClass="choice-button" text="%button.copyUnicode" />
+                           </children>
+                        </HBox>
                         <HBox>
                            <children>
                               <TextField fx:id="glyphCodeLabel" editable="false" HBox.hgrow="ALWAYS">
@@ -104,8 +108,8 @@
                            <children>
                               <TextField fx:id="glyphFactoryCodeLabel" HBox.hgrow="ALWAYS">
                                  <styleClass>
-                                    <String fx:value="glyph-code-label" />
                                     <String fx:value="copy-label" />
+                                    <String fx:value="glyph-code-label" />
                                  </styleClass>
                               </TextField>
                               <Button fx:id="copyFactoryCodeButton" mnemonicParsing="false" onAction="#onCopyFactoryCode" styleClass="choice-button" text="%button.copy" />

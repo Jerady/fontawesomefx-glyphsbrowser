@@ -14,13 +14,8 @@
     -fx-prompt-text-fill: rgba(48,131,251,0.5);
     -fx-hover-color: rgb(234,239,247);
     -fx-selected-color: rgb(179,196,225);
-    -fx-font-family: Panton Normal;
+    -fx-font-family: Panton;
 }
-
-/*.glyph-icon{
-    -fx-font-family: FontAwesome; 
-    -fx-font-size: 1em;
-}*/
 
 
 .glyph-icon:hover {
@@ -92,8 +87,8 @@
 }
 
 .glyph-name-label{
-    -fx-font-weight: bold;
-    -fx-font-size: 1.4em;
+    -fx-font-weight: 900;
+    -fx-font-size: 2em;
 }
 
 .glyph-code-label{
