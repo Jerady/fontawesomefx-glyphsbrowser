@@ -15,13 +15,14 @@ package de.jensd.fx.glyphs.browser;
 
 import de.jensd.fx.glyphs.GlyphIcon;
 import javafx.geometry.Pos;
-import org.controlsfx.control.GridCell;
+import javafx.scene.control.IndexedCell;
+import javafx.scene.control.ListCell;
 
 /**
  *
  * @author Jens Deters
  */
-public class GlyphsGridCell extends GridCell<GlyphIcon> implements SelectableNode{
+public class GlyphsGridCell extends ListCell<GlyphIcon> implements SelectableNode{
 
     public GlyphsGridCell() {
         init();

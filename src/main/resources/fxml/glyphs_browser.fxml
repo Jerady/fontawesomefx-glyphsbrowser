@@ -74,7 +74,7 @@
             </VBox>
             <VBox fx:id="glyphsBox" style="-fx-background-color: -fx-bgcolor;">
                <children>
-                  <GridView fx:id="glyphsGridView" horizontalCellSpacing="8.0" styleClass="glyphs-grid-view" verticalCellSpacing="8.0" VBox.vgrow="ALWAYS" />
+                  <ListView fx:id="glyphsGridView" styleClass="glyphs-grid-view" VBox.vgrow="ALWAYS" />
                   <VBox alignment="CENTER_LEFT" spacing="10.0" VBox.vgrow="NEVER">
                      <children>
                         <HBox fx:id="glyphPreviewPane" alignment="CENTER" minHeight="-Infinity" prefHeight="100.0" spacing="20.0" styleClass="glyphs-preview-view" VBox.vgrow="ALWAYS" />

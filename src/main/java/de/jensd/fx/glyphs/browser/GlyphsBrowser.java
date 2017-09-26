@@ -35,7 +35,6 @@ import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import org.controlsfx.control.GridView;
 
 /**
  *
@@ -76,7 +75,7 @@ public class GlyphsBrowser extends VBox {
     @FXML
     private ListView<GlyphsPack> glyphsPackListView;
     @FXML
-    private GridView<GlyphIcon> glyphsGridView;
+    private ListView<GlyphIcon> glyphsGridView;
     @FXML
     private Pane glyphPreviewPane;
 
@@ -102,9 +101,9 @@ public class GlyphsBrowser extends VBox {
 
     @FXML
     void initialize() {
-        glyphsGridView.setCellFactory((GridView<GlyphIcon> gridView) -> new GlyphsGridCell());
-        glyphsGridView.cellHeightProperty().bind(model.glyphSizeProperty());
-        glyphsGridView.cellWidthProperty().bind(model.glyphSizeProperty());
+        glyphsGridView.setCellFactory((ListView<GlyphIcon> gridView) -> new GlyphsGridCell());
+        //glyphsGridView.cellHeightProperty().bind(model.glyphSizeProperty());
+        //glyphsGridView.cellWidthProperty().bind(model.glyphSizeProperty());
         glyphsGridView.addEventFilter(MouseEvent.MOUSE_PRESSED, event -> {
             if (event.getTarget() instanceof GlyphIcon) {
                 model.selectedGlyphIconProperty().set((GlyphIcon) event.getTarget());

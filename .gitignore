@@ -6,3 +6,6 @@ gradle/
 .gradle/
 .nb-gradle*
 .idea/
+out/
+*.iml
+
