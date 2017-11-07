@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import org.controlsfx.control.GridView?>
 
-<fx:root prefHeight="600.0" prefWidth="1024.0" type="VBox" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefHeight="600.0" prefWidth="1024.0" type="VBox" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
     <children>
       <SplitPane dividerPositions="0.25" VBox.vgrow="ALWAYS">
          <items>
@@ -74,6 +74,15 @@
             </VBox>
             <VBox fx:id="glyphsBox" style="-fx-background-color: -fx-bgcolor;">
                <children>
+                  <HBox spacing="5.0">
+                     <children>
+                        <TextField fx:id="searchBar" promptText="search..." HBox.hgrow="ALWAYS" />
+                        <Label fx:id="searchBarResultsLabel" maxHeight="1.7976931348623157E308" minWidth="-Infinity" prefHeight="25.0" prefWidth="131.0" style="-fx-font-weight: bold;" text="Found: [ All ]" />
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                  </HBox>
                   <GridView fx:id="glyphsGridView" horizontalCellSpacing="8.0" styleClass="glyphs-grid-view" verticalCellSpacing="8.0" VBox.vgrow="ALWAYS" />
                   <VBox alignment="CENTER_LEFT" spacing="10.0" VBox.vgrow="NEVER">
                      <children>
@@ -88,7 +97,7 @@
                               </TextField>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER_RIGHT" >
+                        <HBox alignment="CENTER_RIGHT">
                            <children>
                               <Button fx:id="copyUnicodeCodeButton" mnemonicParsing="false" onAction="#onCopyUnicode" styleClass="choice-button" text="%button.copyUnicode" />
                            </children>
