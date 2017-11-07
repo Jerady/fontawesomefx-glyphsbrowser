@@ -65,14 +65,14 @@ public class GlyphsBrowserAppModel {
     public final static String OCTICONS_PROPERTIES = "/de/jensd/fx/glyphs/octicons/fontinfo.properties";
     public final static String WEATHERICONS_PROPERTIES = "/de/jensd/fx/glyphs/weathericons/fontinfo.properties";
     public final static String EMOJIONE_PROPERTIES = "/de/jensd/fx/glyphs/emojione/fontinfo.properties";
-    public final static String APP_VERSION = "v1.3.0";
-    public final static String APP_NAME = "FontAwesomeFX 8.15 -- GlyphsBrowser";
+    public final static String APP_VERSION = "v9.1.0";
+    public final static String APP_NAME = "FontAwesomeFX 9.1.0 -- GlyphsBrowser";
     public final static String APP_STYLES = "/styles/iconsbrowser.css";
     public final static String RESOURCE_BUNDLE = "i18n/messages";
     public final static String GLYPH_BROWSER_FXML = "/fxml/glyphs_browser.fxml";
     public final static int DEFAULT_WITH = 1024;
     public final static int DEFAULT_HEIGHT = 600;
-    public final static int DEFAULT_GLYPH_SIZE = 24;
+    public final static int DEFAULT_GLYPH_SIZE = 48;
     public final static String[] GLYPH_PREVIEW_SIZES = {"8px", "10px", "12px", "16px", "26px", "36px", "46px", "56px", "66px", "86px"};
 
     private ObservableList<GlyphsPack> glyphsPacks;

@@ -33,14 +33,13 @@ task execute(type:JavaExec) {
 }
 
 dependencies {
-    compile 'de.jensd:fontawesomefx-emojione:2.2.7-9'
-    compile 'de.jensd:fontawesomefx-fontawesome:4.7.0-9'
-    compile 'de.jensd:fontawesomefx-icons525:3.0.0-9'
-    compile 'de.jensd:fontawesomefx-materialdesignfont:1.7.22-9'
-    compile 'de.jensd:fontawesomefx-materialicons:2.2.0-9'
-    compile 'de.jensd:fontawesomefx-octicons:4.3.0-9'
-    compile 'de.jensd:fontawesomefx-weathericons:2.0.10-9'
-    compile 'de.jensd:fontawesomefx-commons:9.0'
-    compile 'de.jensd:fontawesomefx-controls:9.0'
-    compile 'org.controlsfx:controlsfx:9.0.0'
+    compile 'de.jensd:fontawesomefx-emojione:3.1.1-9.1.0'
+    compile 'de.jensd:fontawesomefx-fontawesome:4.7.0-9.1.0'
+    compile 'de.jensd:fontawesomefx-icons525:4.2.0-9.1.0'
+    compile 'de.jensd:fontawesomefx-materialdesignfont:2.0.26-9.1.0'
+    compile 'de.jensd:fontawesomefx-materialicons:2.2.0-9.1.0'
+    compile 'de.jensd:fontawesomefx-octicons:4.3.0-9.1.0'
+    compile 'de.jensd:fontawesomefx-weathericons:2.0.10-9.1.0'
+    compile 'de.jensd:fontawesomefx-commons:9.1.0'
+    compile 'de.jensd:fontawesomefx-controls:9.1.0'
 }
