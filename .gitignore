@@ -1,7 +1,6 @@
 .DS_Store
 build/
 private/
-gradle/
 .nb-gradle/
 .gradle/
 .nb-gradle*

@@ -10,3 +10,7 @@ When Searching
 
 ## Download FontAwesomeFX 8.15
 [from Bintray](https://bintray.com/jerady/maven/FontAwesomeFX/8.15/view)
+
+## Requirements
+
+JDK 11
